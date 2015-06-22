@@ -138,7 +138,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 				width: 310,
 				content: "200x200px for a HD image!",
 				color: "#8165a2",
-				img: "http://www.paperpangolindesign.com/uploads/2/7/3/9/27396733/1393080_orig.jpg",
+				img: "https://videogamesoftheoppressed.files.wordpress.com/2014/02/pangolinidle.png",
 				fa: "fa-check",
 			});
 		});
