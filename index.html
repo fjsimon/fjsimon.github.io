@@ -7,57 +7,71 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body class="body">
-<div class="container">
-    <div class="header">
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-		    <span class="sr-only">Toggle navigation</span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		  </button>
-		  
-		</div>
-		<div class="navbar-collapse collapse">
-		  <ul class="nav navbar-nav">
-		    <li class="active"><a href="http://fjsimon.github.io/">Home</a></li>
-		    <li><a href="#">Projects</a></li>
-		    <li><a href="#">Blog</a></li>
-		    <li><a href="#">Gallery</a></li>
-		  </ul>
-		</div>
-	</nav>
-    </div>
+
+	<div class="header">
+    		<nav class="navbar navbar-default"> 
+		    <div class="container">
+			    <div class="row">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				    <span class="sr-only">Toggle navigation</span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="home">Francisco Javier Lopez Simon</a>
+				</div>
+				<div class="navbar-collapse collapse">
+				  <ul class="nav navbar-nav navbar-right">
+				    <li class="active"><a href="home">Home</a></li>
+				   	<li class="dropdown">
+				      <a aria-expanded="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<span class="caret"></span></a>
+				      <ul class="dropdown-menu" role="menu">
+				      	<li><a href="notifications">Notifications</a></li>
+				      	<li><a href="tinymce">TinyMCE 4</a></li>
+				      	<li><a href="viewer">Viewer</a></li>
+				        <li><a href="login">Login</a></li>
+				        <li><a href="repository">Repository</a></li>
+				        <li class="divider"></li>
+				        <li class="dropdown-header">Nav header</li>
+				        <li><a href="#">Separated link</a></li>
+				      </ul>
+				    </li>
+				    <li><a href="#">Blog</a></li>
+				    <li><a href="gallery">Gallery</a></li>
+				  </ul>
+				</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
 	
-    <div class="container">
+   	<div class="container">
         <div class="row">
-			<!-- <div class="center-block" style="width:400px;"> -->
+		<!-- <div class="center-block" style="width:400px;"> -->
 	    	<div class="col-xs-8 col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
 	       		<h3> francisco Javier Lopez Simon </h3>
 	       		<h4> Web developer at Research Space </h4>
-	        	<p> Under construction </p>
-	        	<p> Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-	        	<p> Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-	        	<p> Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-	        	<p> Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+	        	<p> I am web developer working on front-end and back-end at Research Space, although I started as a web tester using Selenium Webdriver and jUnit. I have been working on different areas in the project during the last years.</p>
+	        	<p> In my spare time, I like travelling, cicling... </p>
 	        </div>
         </div>
-    </div>
+    	</div>
+
+	<div class="footer">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<p><a href="http://fjsimon.github.io/">Francisco Javier Lopez Simon </a></p>
+			</div>
+		</nav>
+	</div>
 	
-    <div class="footer">
-	<nav class="navbar navbar-default navbar-fixed-bottom" style="min-height:10px">
-		<div class="container">
-		<p> <a href="http://fjsimon.github.io/">Francisco Javier Lopez Simon </a> </p>
-		</div>
-	</nav>
-    </div>
-    
-</div>     
 </body> 
 </html>
