@@ -55,7 +55,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 				width: 310,
 				content: "200x200px for a HD image!",
 				color: "#8165a2",
-				img: "/EtOpere/resources/images/success200.png",
+				img: "https://cdn3.iconfinder.com/data/icons/line-icons-medium-version/64/bell-512.png",
 				fa: "fa-check",
 			});
 		});
