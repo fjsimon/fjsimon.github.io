@@ -1,8 +1,6 @@
 define(['jquery', 'velocity'], function($){
 	
-
-(function($) {
-	(function(a) {
+(function(a) {
         (jQuery.browser = jQuery.browser || {}).mobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4));
     })(navigator.userAgent || navigator.vendor || window.opera);
     ! function(a, b) {
@@ -121,17 +119,14 @@ define(['jquery', 'velocity'], function($){
 
 	$(document).ready(function() {
 	    var NewContent;
-	    NewContent = '<div id="mnSBcontainerTR" align="right"></div>';
+	    NewContent =  '<div id="mnSBcontainerTR" align="right"></div>';
 	    NewContent += '<div id="mnSBcontainerTL"></div>';
 	    NewContent += '<div id="mnSBcontainerBL"></div>';
 	    NewContent += '<div id="mnSBcontainerBR" align="right"></div>';
-	    
 	    NewContent += '<div id="mbBbTabContainer"></div>';
 	    NewContent += '<div id="mnBigBoxContainerBR"></div>';
 	    NewContent += '<div id="mnBigBoxContainerBL"></div>';
-	    
 	    NewContent += '<span id="mnLetterCounter"></span>';
-	
 	    $("body").append(NewContent);
 
         $("body").on("mouseenter", ".mnSbButtonSection button", function() {
@@ -168,9 +163,9 @@ define(['jquery', 'velocity'], function($){
 	            $(".mnSmallBox").each(function() {
 	                CheckSpaceSB($(this));
 	            });
-//	            $(".mnBigBox").each(function() {
-//	                CheckSpaceBB($(this))
-//	            });
+	            $(".mnBigBox").each(function() {
+	                CheckSpaceBB($(this));
+	            });
 //	            $(".mnSidePanel").each(function() {
 //	                CheckSpaceSP($(this))
 //	            })
@@ -238,10 +233,8 @@ define(['jquery', 'velocity'], function($){
 	    } else {
 	        if (WindowWidth >= (SmallBoxOriginalWidth + 5)) {
 	        	SmallBox.velocity({width: SmallBoxOriginalWidth,}, {duration: 300,});
-	            // TweenLite.to(SmallBox, 0.3, {width: SmallBoxOriginalWidth})
 	        } else {
 	        	SmallBox.velocity({width: (WindowWidth - 5),}, {duration: 300,});
-	            // TweenLite.to(SmallBox, 0.3, {width: (WindowWidth - 5)})
 	        }
 	    }
 	    if (WindowWidth < 700) {
@@ -257,6 +250,7 @@ define(['jquery', 'velocity'], function($){
 	    }
 	}
     
+	/******************************** SMALL BOX ************************************************/
 
 	$.vSBox = function(settings, callback) {
 		settings = $.extend({
@@ -457,6 +451,420 @@ define(['jquery', 'velocity'], function($){
 	    }
 	};
 
-})(jQuery);
+	/******************************** BIG BOX ************************************************/
+	
+    $.vBBox = function(settings, callback) {
+        settings = $.extend({
+            position: 1,
+            title: undefined,
+            content: "",
+            width: 350,
+            img: undefined,
+            fa: "fa-star",
+            sound: true,
+            soundpath: "static/sound/",
+            color: "#6D1D99",
+            timeout: undefined,
+            colortime: 1000,
+            delay: 0,
+            colors: [],
+            closeicon: true,
+            tabicon: true,
+            buttons: [],
+            buttonhover: "#3E006E",
+            number: undefined,
+        }, settings);
+        var Content = "";
+        bb += 1;
+        HideAllBigBoxes();
+        if ($.browser.mobile) {
+            settings.sound = false;
+            if (settings.position === 2) {
+                settings.position = 1;
+            }
+        }
+        if (settings.sound) {
+            PlaySound(settings.soundpath, "bigbox");
+        }
+        if (settings.colors.length > 0) {
+            settings.color = settings.colors[0];
+        }
+        if (settings.buttons.length > 0) {
+            settings.closeicon = false;
+        }
+        Content += "<div id='bb" + bb + "' class='mnBigBox' style='background-color:" + 
+        	settings.color + "; width:" + settings.width + "px;' data-bbtab='#bbt" + bb + "'>";
+        Content += "<i class='bbClose'></i>";
+        Content += "<table>";
+        Content += "<tr>";
+        Content += "<td>";
+        if (settings.title !== undefined) {
+            Content += "<span class='mnBbTitle'>" + settings.title + "</span>";
+        }
+        if (settings.closeicon) {
+            Content += "<i data-closebigbox='#bb" + bb + "' class='mnBbClose fa fa-times fa-2x'></i>";
+        }
+        Content += "<span class='mnBbContent'>";
+        Content += settings.content;
+        Content += "</span>";
+        Content += "</td>";
+        Content += "</tr>";
+        if (settings.buttons.length === 0) {
+            Content += " <tr>";
+            Content += " <td class='mnBbIconSection'>";
+            if (settings.img !== undefined) {
+                Content += "<img src='" + settings.img + "' class='mnBbIconImg'>";
+            } else {
+                Content += "<i class='fa " + settings.fa + "'></i>";
+            }
+            if (settings.number !== undefined) {
+                Content += "<span class='mnBbIndicator'>" + settings.number + "</span>";
+            }
+            Content += "</td>";
+            Content += "</tr>";
+        } else {
+            Content += " <tr>";
+            Content += " <td class='mnBbIconSection'>";
+            for (var i = 0; i <= settings.buttons.length - 1; i++) {
+                Content += "<button style='background-color:" + settings.color + ";' data-hovercolor='" +
+                		settings.buttonhover + "' data-normalcolor='" + settings.color + "' >" +
+                		settings.buttons[i] + "</button>";
+            }
+            Content += "</td>";
+            Content += "</tr>";
+            Content += "</table>";
+        }
+        Content += "</div>";
+        var TabContent = "";
+        if (settings.tabicon) {
+            TabContent += '<div id="bbt' + bb + '" class="mnBbTab" align="center" style="background-color:' +
+            		settings.color + '" data-bigbox="#bb' + bb + '">';
+            if (settings.img === undefined) {
+                if (settings.fa === undefined) {
+                    TabContent += '<i class="fa fa-star-o"></i>';
+                } else {
+                    TabContent += '<i class="fa ' + settings.fa + '"></i>';
+                }
+            } else {
+                TabContent += '<img src="' + settings.img + '">';
+            }
+            TabContent += "</div>";
+            $("#mbBbTabContainer").append(TabContent);
+            var bbTab = $("#bbt" + bb);
+            bbTab.css("left", "50px");      
+            bbTab.velocity({ opacity: 1, }, { duration: 500, delay: settings.delay + 0.5, })
+				.velocity({ left: "0px", }, { duration: 800, easing: "easeOutBounce", });
+            
+//            tl.to(bbTab, 0.5, {
+//                autoAlpha: 1,
+//                delay: (settings.delay + 0.5)
+//            }).to(bbTab, 0.8, {
+//                left: "0px",
+//                ease: Bounce.easeOut
+//            }, "-=0.5")
+        }
+        
+        if (settings.position === 1) {
+            $("#mnBigBoxContainerBR").append(Content);
+        } else {
+            $("#mnBigBoxContainerBL").append(Content);
+        }
+        
+        var BigBox = $("#bb" + bb);
+        BigBox.attr("data-width", settings.width);
+        CheckSpaceBB(BigBox);
+        BigBox.css("bottom", "50px");
+        BigBox.velocity({ opacity: 1, }, { duration: 500, delay: settings.delay, })
+			.velocity({ bottom: "0px", }, { duration: 800, easing: "easeOutBounce", });
+        
+//        if (settings.colors.length > 0) {
+//            setInterval(function() {
+//                if (BigBox.attr("data-indexcolor") === undefined) {
+//                    BigBox.attr("data-indexcolor", "0")
+//                }
+//                var bbTab = $(BigBox.attr("data-bbtab"));
+//                var ColorIdx = BigBox.attr("data-indexcolor") * 1;
+//                if (ColorIdx >= settings.colors.length - 1) {
+//                    ColorIdx = 0;
+//                } else {
+//                    ColorIdx += 1;
+//                }
+//                var NextColor = settings.colors[ColorIdx];
+//                tl.to(BigBox, 0.8, {
+//                    backgroundColor: NextColor
+//                }).to(bbTab, 0.8, {
+//                    backgroundColor: NextColor
+//                }, "-=0.8");
+//                BigBox.attr("data-indexcolor", ColorIdx)
+//            }, settings.colortime)
+//        }
+        
+        if (settings.timeout !== undefined) {
+            setTimeout(function() {
+                if (typeof callback == "function") {
+                    if (callback) {
+                        callback("timeoutReach");
+                    }
+                }
+                DestroyBigBox(BigBox);
+            }, settings.timeout);
+        }
+        BigBox.find(".bbClose").bind("click", function() {
+            if (typeof callback == "function") {
+                if (callback) {
+                    callback("closeIconTouch");
+                }
+            }
+        });
+        if (settings.buttons.length > 0) {
+            BigBox.find(".mnBbIconSection button").bind("tap", function() {
+                $(this).unbind("tap");
+                var ButtonText = $(this).text();
+                if (typeof callback === "function") {
+                    if (callback) {
+                        callback("buttonPress", ButtonText);
+                    }
+                }
+                DestroyBigBox(BigBox, true);
+                setTimeout(function() {
+                    if ($(".mnBigBox").length - 1 >= 0) {
+                    	var BigBoxNext = $(".mnBigBox:last");
+                        BigBoxNext.velocity({ opacity: 1, }, { duration: 300,});
+                    }
+                }, 405);
+            });
+        }
+    };
+	
+    function DestroyBigBox(BigBox, nuke) {
+        var bbTab = $(BigBox.attr("data-bbtab"));
+        var MouseOver = BigBox.attr("data-mouseover");
+        if (nuke === undefined) {
+            if (MouseOver !== undefined) {
+                BigBox.bind("mouseleave", function() {
+                    $(this).removeAttr("data-mouseover");
+                    $(this).unbind("mouseleave");
+                    DestroyBigBox($(this));
+                });
+                return false;
+            }
+        }
+        
+        BigBox.velocity({ opacity: 0, }, { duration: 400, })
+			.velocity({ bottom: "-=150", }, { duration: 1000, easing: "easeOutBounce", });
+        
+        bbTab.velocity({ left: "+=100", }, { duration: 1000, easing: "easeOutBounce", })
+			.velocity({ height: "0px", marginBottom: "0px", paddingTop: "5px"}, 
+					{ duration: 1000, easing: "easeOutBounce", });
+        
+//        var tl = new TimelineLite();
+//        tl.to(BigBox, 0.4, {
+//            autoAlpha: 0
+//        }).to(BigBox, 1, {
+//            bottom: "-=150",
+//            ease: Bounce.easeOut
+//        }, "-=0.4").to(bbTab, 1, {
+//            left: "+=100",
+//            ease: Bounce.easeOut
+//        }, "-=1").to(bbTab, 1, {
+//            height: "0px",
+//            marginBottom: "0px",
+//            paddingTop: "5px",
+//            ease: Bounce.easeOut
+//        }, "-=0.5");
+        
+        setTimeout(function() {
+            bbTab.slideUp();
+        }, 100);
+        setTimeout(function() {
+            BigBox.remove();
+            bbTab.remove();
+        }, 400);
+    }
 
+    function HideAllBigBoxes() {
+        $(".mnBigBox").each(function() {
+            var BigBox = $(this);
+            BigBox.velocity({ opacity: 0, }, { duration: 500, });
+        });
+    }
+    
+    function CheckSpaceBB(BigBox) {
+        var WindowWidth = $(document).width();
+        var BigBoxWidth = BigBox.width();
+        var BigBoxOriginalWidth = eval(BigBox.attr("data-width"));
+        if (WindowWidth <= (BigBoxWidth + 18)) {
+            BigBox.css("width", (WindowWidth - 18) + "px");
+        } else {
+            if (WindowWidth >= (BigBoxOriginalWidth + 18)) {
+                BigBox.velocity({ width: BigBoxOriginalWidth, }, { duration: 300, });
+            } else {
+            	BigBox.velocity({ width: (WindowWidth - 18), }, { duration: 300, });
+            }
+        }
+    }
+    
+	/******************************** LOADING ************************************************/
+    var ml = 0;
+    var LoadingArray;
+    $.vLoading = function(settings, callback) {
+        var Content = "";
+        settings = $.extend({
+            title: undefined,
+            content: undefined,
+            fa: undefined,
+            blockpage: true,
+            timeout: undefined,
+            texts: [],
+            backgroundcolor: "#000000",
+            backgroundcontent: "#232323",
+            opacity: 0.7,
+            colortime: 1500,
+            colors: [],
+        }, settings);
+        ml += 1;
+        CurrentLoading = 1;
+        clearInterval(SpecialLoadingTimer);
+        if (settings.blockpage) {
+            document.body.style.overflow = "hidden";
+        }
+        if (settings.texts.length > 0) {
+            settings.title = settings.texts[0];
+            LoadingArray = settings.texts;
+        }
+        Content = "<div id='mlBg" + ml + "' class='mnMlBackground' style='background-color:" + settings.backgroundcolor + ";'></div>";
+        $("body").prepend(Content);
+        Content = "<div id='ml" + ml + "' class='mnMlMainContent' data-loadingbg='#mlBg" + ml + "'>";
+        Content += "<table>";
+        Content += "<tr>";
+        Content += "<td align='center'>";
+        Content += "<div class='mnMlMainContainer' style='background-color:" + settings.backgroundcontent + ";'>";
+        if (settings.title !== undefined) {
+            Content += "<span class='mnMlTitle'>" + settings.title + "</span>";
+        }
+        if (settings.texts.length === 0) {
+            if (settings.fa !== undefined) {
+                Content += "<i class='mnMlLoadingIcon fa " + settings.fa + " fa-spin'></i>";
+            }
+            if (settings.content) {
+                Content += "<span class='mnMlContent'>";
+                Content += settings.content;
+                Content += "</span>";
+            }
+        }
+        Content += "</div>";
+        Content += "</td>";
+        Content += "</tr>";
+        Content += "</table>";
+        Content += "</div>";
+        $("body").prepend(Content);
+        var mlBg = $("#mlBg" + ml);
+        var MetroLoading = $("#ml" + ml);
+        if (settings.timeout !== undefined) {
+            setTimeout(function() {
+                if (typeof callback == "function") {
+                    if (callback) {
+                        callback("timeoutReach");
+                    }
+                }
+                DestroytLoading(MetroLoading);
+            }, settings.timeout);
+        }
+
+        mlBg.velocity({ opacity: settings.opacity, }, { duration: 400, });
+		MetroLoading.velocity({ opacity: 1, }, { duration: 400, });
+        
+        if (settings.texts.length > 0) {
+            var LoadingLabel = MetroLoading.find(".mnMlTitle");
+            var InitialWidth = LoadingLabel.width();
+            LoadingLabel.css({opacity: 0, left: "-50px"});
+            
+            LoadingLabel.velocity({ opacity: 1, }, { duration: 400, })
+				.velocity({ left: 80, }, { duration: 3000, });
+         
+            CurrentLoading = 2;
+            clearInterval(SpecialLoadingTimer);
+            SpecialLoadingTimer = setInterval(function() {
+                switch (CurrentLoading) {
+                    case 1:
+                        LoadingLabel.velocity({ opacity: 0, }, { duration: 300, complete: function(){ChangeText();}})
+							.velocity({ left: -80, }, { duration: 0, })
+							.velocity({ opacity: 1, }, { duration: 400, })
+							.velocity({ left: 80, }, { duration: 3000, });
+                        
+                        CurrentLoading = 2;
+                        break;
+                    case 2:
+                    	
+                        LoadingLabel.velocity({ opacity: 0, }, { duration: 300, complete: function(){ChangeText();}})
+        					.velocity({ left: 0, top: -80}, { duration: 0, })
+        					.velocity({ opacity: 1, }, { duration: 400, })
+        					.velocity({ top: 0, }, { duration: 2000, easing: "easeOutBounce", });
+        					
+                        CurrentLoading = 3;
+                        break;
+                    case 3:
+                        LoadingLabel.velocity({ opacity: 0, }, { duration: 300, complete: function(){ChangeText();}})
+    						.velocity({ left: 80}, { duration: 0, })
+    						.velocity({ opacity: 1, }, { duration: 400, })
+    						.velocity({ left: -80, }, { duration: 3000, });
+                        
+                        CurrentLoading = 4;
+                        break;
+                    case 4:
+                        LoadingLabel.velocity({ opacity: 0, }, { duration: 300, complete: function(){ChangeText();}})
+							.velocity({ top: +80, left:0, }, { duration: 0, })
+							.velocity({ opacity: 1, }, { duration: 400, easing: "easeOutBounce",})
+							.velocity({ top: 0, }, { duration: 3000, });
+
+                        CurrentLoading = 1;
+                        break;
+                }
+            }, 3200);
+        }
+//        if (settings.colors.length > 0) {
+//            mlBg.css("background-color", settings.colors[0]);
+//            var MainContainer = MetroLoading.find(".mnMlMainContainer");
+//            MainContainer.css("background-color", settings.colors[0]);
+//            clearInterval(MsgTimer);
+//            MsgTimer = setInterval(function() {
+//                if (MetroLoading.attr("data-indexcolor") === undefined) {
+//                    MetroLoading.attr("data-indexcolor", "0")
+//                }
+//                var mlBg = $(MetroLoading.attr("data-loadingbg"));
+//                var MainContainer = MetroLoading.find(".mnMlMainContainer");
+//                var ColorIdx = MetroLoading.attr("data-indexcolor") * 1;
+//                if (ColorIdx >= settings.colors.length - 1) {
+//                    ColorIdx = 0
+//                } else {
+//                    ColorIdx += 1
+//                }
+//                var NextColor = settings.colors[ColorIdx];
+//                tl.to([MainContainer, mlBg], 0.8, {
+//                    backgroundColor: NextColor
+//                });
+//                MetroLoading.attr("data-indexcolor", ColorIdx)
+//            }, settings.colortime)
+//        }
+    };
+    
+    function DestroytLoading(MetroLoading) {
+        clearInterval(MsgTimer);
+        var MetroLoadingBG = $(MetroLoading.attr("data-loadingbg"));
+        MetroLoadingBG.velocity({ opacity: 0, }, { duration: 300, });
+		MetroLoading.velocity({ opacity: 0, }, { duration: 300, });
+        setTimeout(function() {
+            MetroLoadingBG.remove();
+            MetroLoading.remove();
+        }, 300);
+        document.body.style.overflow = "visible";
+    }
+    
+    function ChangeText() {
+        SpecialIdx += 1;
+        if (SpecialIdx > LoadingArray.length - 1) {
+            SpecialIdx = 0;
+        }
+        $(".mnMlTitle").html(LoadingArray[SpecialIdx]);
+    }
 });
