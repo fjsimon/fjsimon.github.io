@@ -19,7 +19,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			e.preventDefault();
 			$.vSBox({
 				title: "Notice Notification",
-				content: "I'm here to show you this amazing notification system!",
+				content: "This is a notice notification.",
 				buttonhover: "#0484ba",
 				color: "rgb(66, 184, 221)",
 				fa: "fa-exclamation-circle",
@@ -30,7 +30,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			e.preventDefault();
 			$.vSBox({
 				title: "Warning Notification",
-				content: "I'm here to show you this amazing notification system!",
+				content: "This is a warning notification.",
 				buttonhover: "#0484ba",
 				color: "rgb(223, 117, 20)",
 				fa: "fa-exclamation-triangle",
@@ -41,10 +41,22 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			e.preventDefault();
 			$.vSBox({
 				title: "Error Notification",
-				content: "I'm here to show you this amazing notification system!",
+				content: "This is a error notification.",
 				buttonhover: "#0484ba",
 				color: "rgb(202, 60, 60)",
 				fa: "fa-times-circle",
+			});
+		});
+		
+		$( document ).on( "click", "#customNotification", function(e) {
+			e.preventDefault();
+			$.vSBox({
+				title: "Images!",
+				width: 310,
+				content: "200x200px for a HD image!",
+				color: "#8165a2",
+				img: "/EtOpere/resources/images/success200.png",
+				fa: "fa-check",
 			});
 		});
 		
@@ -63,8 +75,9 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			});
 		});
 		
-		$( document ).on( "click", "#confirmation2", function() {
-			$.bigBox({
+		$( document ).on( "click", "#confirmation2", function(e) {
+			e.preventDefault();
+			$.vBBox({
 				position: 1,
 				title: "Confirmation",
 				content: "Do you want to delete the following record(s)?",
@@ -79,9 +92,9 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			});
 		});
 	
-		$( document ).on( "tap", "#loader", function() {
-		    $.metroLoading({
-		        title:"Searching...",
+		$( document ).on( "tap", "#loading", function() {
+		    $.vLoading({
+		        title:"Loading...",
 		        content:"Please do not refresh the page",
 		      	fa: "fa-spinner",
 		        backgroundcolor: "#EEE",
@@ -103,7 +116,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			});
 		});
 		
-		$( document ).on( "click", "#n3", function() {
+		$( document ).on( "click", "#notification1", function() {
 			$.metroMessageBox({
 				title: "Did you like it?",
 				content: "You now, all this features are almost for free! ( $5 )",
@@ -119,7 +132,7 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 			});
 		});
 		
-		$( document ).on( "click", "#n4", function() {
+		$( document ).on( "click", "#notification2", function() {
 			$.metroMessageBox({
 				title: "Is getting better!",
 				content: "Metro MessageBox is getting bigger and Stronger!",
@@ -130,18 +143,6 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 				activebutton:"#139B80",
 			});
 		});
-		
-		$( document ).on( "click", "#customNotification", function(e) {
-			e.preventDefault();
-			$.vSBox({
-				title: "Images!",
-				width: 310,
-				content: "200x200px for a HD image!",
-				color: "#8165a2",
-				img: "https://videogamesoftheoppressed.files.wordpress.com/2014/02/pangolinidle.png",
-				fa: "fa-check",
-			});
-		});
-		
+
 	});
 });
