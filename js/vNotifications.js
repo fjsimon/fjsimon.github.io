@@ -249,7 +249,7 @@ define(['jquery', 'velocity'], function($){
 	function CheckSpaceSB(SmallBox) {
 	    var WindowWidth = $(document).width();
 	    var SmallBoxWidth = SmallBox.width();
-	    var SmallBoxOriginalWidth = SmallBox.attr("data-width"); //eval(SmallBox.attr("data-width"));
+	    var SmallBoxOriginalWidth = eval(SmallBox.attr("data-width"));
 	    if (WindowWidth <= (SmallBoxWidth + 5)) {
 	        SmallBox.css("width", (WindowWidth - 5) + "px");
 	    } else {
@@ -714,7 +714,7 @@ define(['jquery', 'velocity'], function($){
     function CheckSpaceBB(BigBox) {
         var WindowWidth = $(document).width();
         var BigBoxWidth = BigBox.width();
-        var BigBoxOriginalWidth = BigBox.attr("data-width"); //eval(BigBox.attr("data-width"));
+        var BigBoxOriginalWidth = eval(BigBox.attr("data-width"));
         if (WindowWidth <= (BigBoxWidth + 18)) {
             BigBox.css("width", (WindowWidth - 18) + "px");
         } else {
@@ -1066,7 +1066,7 @@ define(['jquery', 'velocity'], function($){
     function CheckSpaceSP(MetroSidePanel) {
         var WindowWidth = $(document).width();
         var MetroSidePanelWidth = MetroSidePanel.width();
-        var MetroSidePanelOriginalWidth = MetroSidePanel.attr("data-width"); //eval(MetroSidePanel.attr("data-width"));
+        var MetroSidePanelOriginalWidth = eval(MetroSidePanel.attr("data-width"));
         if (WindowWidth < (MetroSidePanelWidth + 30)) {
             MetroSidePanel.css("width", (WindowWidth - 30) + "px");
         } else {
