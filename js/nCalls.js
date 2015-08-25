@@ -143,6 +143,18 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 				activebutton:"#139B80",
 			});
 		});
+		
+		$( document ).on( "tap", "#panel", function() {
+			$.vSidePanel({
+				position: 1,
+				title: "Info panel",
+				content: "You know, this can help you to show everything you want." +
+							"<br/><br/>Even iFrames with cache!",
+				backgroundcontent: "#1B7CBD",
+				fa: "fa-pagelines",
+				timeout: 6000,
+			});
+		});
 
 	});
 });
