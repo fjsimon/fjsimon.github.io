@@ -1078,4 +1078,250 @@ define(['jquery', 'velocity'], function($){
         }
     }
 
+    /********************************** Message Box ***********************************************/   
+    var mm = 0;
+    $.vMessageBox = function(settings, callback) {
+        settings = $.extend({
+            title: undefined,
+            content: undefined,
+            normalbutton: undefined,
+            activebutton: "#6D1D99",
+            buttons: [],
+            icons: [],
+            defaultbutton: undefined,
+            sound: true,
+            input: undefined,
+            placeholder: "",
+            maxlength: 1000,
+            showcounter: true,
+            options: [],
+            values: [],
+            soundpath: "static/sound/",
+            backgroundcolor: "#000000",
+            backgroundcontent: "#232323",
+            blockpage: true,
+            opacity: 0.7,
+            colortime: 1500,
+            colors: [],
+            timeout: undefined,
+        }, settings);
+        var Content = "";
+        mm += 1;
+        if ($.browser.mobile) {
+            settings.sound = false;
+        }
+        if (settings.sound) {
+            PlaySound(settings.soundpath, "messagebox");
+        }
+        if (settings.normalbutton === undefined) {
+            settings.normalbutton = settings.backgroundcontent;
+        }
+        if (settings.blockpage) {
+            document.body.style.overflow = "hidden";
+        }
+        if (settings.showcounter) {
+            $("#mnLetterCounter").attr("data-show", "yes");
+        } else {
+            $("#mnLetterCounter").attr("data-show", "no");
+        }
+        var NewInput = "";
+        if (settings.input !== undefined) {
+            NewInput += "<span class='mbMsgBoxTextContent'>";
+            switch (settings.input) {
+                case "text":
+                    NewInput = "<input class='mnInputField' type='text' placeholder='" + settings.placeholder + "' maxlength='" + settings.maxlength + "'>";
+                    break;
+                case "textarea":
+                    NewInput = "<textarea class='mnTextareaField' type='text' placeholder='" + settings.placeholder + "' maxlength='" + settings.maxlength + "'></textarea>";
+                    break;
+                case "password":
+                    NewInput = "<input class='mnInputField' type='password' placeholder='" + settings.placeholder + "' maxlength='" + settings.maxlength + "'>";
+                    break;
+                case "email":
+                    NewInput = "<input class='mnInputField' type='email' placeholder='" + settings.placeholder + "' maxlength='" + settings.maxlength + "'>";
+                    break;
+                case "select":
+                    if (settings.options.length === 0) {
+                        alert("Metro Notifications: I required 'options', to display the Input Selectbox");
+                        document.body.style.overflow = "visible";
+                        return;
+                    }
+                    NewInput = "<select class='mnSelectField'>";
+                    for (var i = 0; i <= settings.options.length - 1; i++) {
+                        var Value = settings.options[i];
+                        if (settings.values[i] !== undefined) {
+                            Value = settings.values[i];
+                        }
+                        NewInput += "<option value='" + Value + "'>" + settings.options[i] + "</option>";
+                    }
+                    NewInput += "</select>";
+                    break;
+                default:
+                    alert("Metro Notifications: That input type is not supported");
+                    break;
+            }
+            NewInput += "</span>";
+        }
+        Content = "<div id='mnMmBg" + mm + "' class='mnMmBackScreen' style='background-color:" + settings.backgroundcolor + "'></div>";
+        $("body").append(Content);
+        Content = "<div id='mnMmBox" + mm + "' class='mnMsgBox' data-background='#mnMmBg" + mm + "'>";
+        Content += "<table>";
+        Content += "<tr>";
+        Content += "<td align='center' class='mnMsgBoxTextContainer'>";
+        Content += "<div class='mbMsgBoxMainContainer' style='background-color:" + settings.backgroundcontent + "'>";
+        if (settings.title !== undefined) {
+            Content += "<span class='mnMsgBoxTitle'>";
+            Content += settings.title;
+            Content += "</span>";
+        }
+        if (settings.content !== undefined) {
+            Content += "<span class='mbMsgBoxTextContent'>";
+            Content += settings.content;
+            Content += "</span>";
+        }
+        Content += NewInput;
+        if (settings.buttons.length > 0) {
+            Content += "<span class='mbMsgBoxButtonSection'>";
+            for (var i = 0; i <= settings.buttons.length - 1; i++) {
+                var Icon = settings.icons[i];
+                if (settings.defaultbutton !== undefined) {
+                    if ((i + 1) == settings.defaultbutton) {
+                        if (Icon !== undefined) {
+                            Content += "<button data-default='true' style='background-color:" + settings.activebutton + "' data-normalcolor='" + settings.activebutton + "' data-hovercolor='" + settings.activebutton + "'><i class='fa " + Icon + "'></i>" + settings.buttons[i] + "</button>";
+                        } else {
+                            Content += "<button data-default='true' style='background-color:" + settings.activebutton + "' data-normalcolor='" + settings.activebutton + "' data-hovercolor='" + settings.activebutton + "'>" + settings.buttons[i] + "</button>";
+                        }
+                    } else {
+                        if (Icon !== undefined) {
+                            Content += "<button style='background-color:" + settings.normalbutton + "' data-normalcolor='" + settings.normalbutton + "' data-hovercolor='" + settings.activebutton + "'><i class='fa " + Icon + "'></i>" + settings.buttons[i] + "</button>";
+                        } else {
+                            Content += "<button style='background-color:" + settings.normalbutton + "' data-normalcolor='" + settings.normalbutton + "' data-hovercolor='" + settings.activebutton + "'>" + settings.buttons[i] + "</button>";
+                        }
+                    }
+                } else {
+                    if (Icon !== undefined) {
+                        Content += "<button style='background-color:" + settings.normalbutton + "' data-normalcolor='" + settings.normalbutton + "' data-hovercolor='" + settings.activebutton + "'><i class='fa " + Icon + "'></i>" + settings.buttons[i] + "</button>";
+                    } else {
+                        Content += "<button style='background-color:" + settings.normalbutton + "' data-normalcolor='" + settings.normalbutton + "' data-hovercolor='" + settings.activebutton + "'>" + settings.buttons[i] + "</button>";
+                    }
+                }
+            }
+            Content += "</span>";
+        }
+        Content += "</div>";
+        Content += "</td>";
+        Content += "</tr>";
+        Content += "</table>";
+        Content += "</div>";
+        $("body").append(Content);
+        var MetroBackground = $("#mnMmBg" + mm);
+        var MetroMsg = $("#mnMmBox" + mm);
+        
+        MetroBackground.velocity({ opacity: settings.opacity, }, { duration: 400, });
+        MetroMsg.velocity({ opacity: 1, }, { duration: 400, });
+        
+//        var tl = new TimelineLite();
+//        tl.to(MetroBackground, 0.4, {
+//            autoAlpha: settings.opacity
+//        }).to(MetroMsg, 0.4, {
+//            autoAlpha: 1
+//        }, "-=0.1");
+        
+        if (settings.defaultbutton !== undefined) {
+            setTimeout(function() {
+                MetroMsg.find(".mbMsgBoxButtonSection button").each(function() {
+                    var isDefault = $(this).attr("data-default");
+                    if (isDefault === "true") {
+                        $(this).focus();
+                    }
+                });
+            }, 400);
+        }
+        if (settings.input !== undefined && $.browser.mobile === false) {
+            setTimeout(function() {
+                MetroMsg.find("input,textarea").focus();
+            }, 401);
+        }
+        if (settings.colors.length > 0) {
+            MetroBackground.css("background-color", settings.colors[0]);
+            var MainContainer = MetroMsg.find(".mbMsgBoxMainContainer");
+            MainContainer.css("background-color", settings.colors[0]);
+            clearInterval(MsgTimer);
+            MsgTimer = setInterval(function() {
+                if (MetroMsg.attr("data-indexcolor") === undefined) {
+                    MetroMsg.attr("data-indexcolor", "0");
+                }
+                var MetroBackground = $(MetroMsg.attr("data-background"));
+                var MainContainer = MetroMsg.find(".mbMsgBoxMainContainer");
+                var Buttons = MetroMsg.find(".mbMsgBoxButtonSection button");
+                var ColorIdx = MetroMsg.attr("data-indexcolor") * 1;
+                if (ColorIdx >= settings.colors.length - 1) {
+                    ColorIdx = 0;
+                } else {
+                    ColorIdx += 1;
+                }
+                var NextColor = settings.colors[ColorIdx];
+                
+                MainContainer.velocity({ backgroundColor: NextColor, }, { duration: 800, });
+                Buttons.velocity({ backgroundColor: NextColor, }, { duration: 800, });
+ 			   	MetroBackground.velocity({ backgroundColor: NextColor, }, { duration: 800, });
+                
+//                tl.to([MainContainer, Buttons, MetroBackground], 0.8, {
+//                    backgroundColor: NextColor
+//                });
+                MetroMsg.attr("data-indexcolor", ColorIdx);
+            }, settings.colortime);
+        }
+        if (settings.timeout !== undefined) {
+            setTimeout(function() {
+                if (typeof callback === "function") {
+                    if (callback) {
+                        callback("timeoutReach");
+                    }
+                }
+                DestroyMessageBox(MetroMsg);
+            }, settings.timeout);
+        }
+        if (settings.buttons.length > 0) {
+            MetroMsg.find(".mbMsgBoxButtonSection button").bind("tap", function() {
+                var Value = MetroMsg.find("input,textarea, select").val();
+                var SelectedText = MetroMsg.find("select option:selected").text();
+                $(this).unbind("tap");
+                var ButtonText = $(this).text();
+                if (typeof callback === "function") {
+                    if (callback) {
+                        callback("buttonPress", ButtonText, Value, SelectedText);
+                    }
+                }
+                DestroyMessageBox(MetroMsg);
+            });
+        }
+    };
+    
+    function DestroyMessageBox(MetroMessageBox) {
+        var MetroBackground = $(MetroMessageBox.attr("data-background"));
+//        var tl = new TimelineLite();
+        var txtLetterCounter = $("#mnLetterCounter");
+        txtLetterCounter.velocity({ opacity: 0, }, { duration: 300, }); 
+        MetroBackground.velocity({ opacity: 0, }, { duration: 300, });
+        MetroMessageBox.velocity({ opacity: 0, }, { duration: 300, });
+        $("#mnLetterCounter").velocity({ opacity: 0, }, { duration: 300, });
+        
+//        tl.to(txtLetterCounter, 0.3, {
+//            autoAlpha: 0
+//        }).to(MetroBackground, 0.3, {
+//            autoAlpha: 0
+//        }, "-=0.3").to(MetroMessageBox, 0.3, {
+//            autoAlpha: 0
+//        }, "-=0.3").to($("#mnLetterCounter"), 0.3, {
+//            autoAlpha: 0
+//        }, "-=0.3");
+        
+        setTimeout(function() {
+            MetroBackground.remove();
+            MetroMessageBox.remove();
+        }, 300);
+        document.body.style.overflow = "visible";
+        clearInterval(MsgTimer);
+    }
 });
