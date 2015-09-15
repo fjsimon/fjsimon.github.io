@@ -117,23 +117,23 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 		});
 		
 		$( document ).on( "click", "#notification1", function() {
-			$.metroMessageBox({
-				title: "Did you like it?",
-				content: "You now, all this features are almost for free! ( $5 )",
-				buttons: ["Yes, I want to buy it now!","No, I want more"],
+			$.vMessageBox({
+				title: "Do you like it?",
+				content: "You now, all this features are free",
+				buttons: ["Yes, I like it","No, I don't"],
 				icons: ["fa-thumbs-o-up", "fa-times"],
 				sound: false,
 				activebutton:"#139B80",
 			},function(action, buttonPress){
 				alert("action: "+ action + "  ButtonPress: " + buttonPress);
-				if(buttonPress == "Yes, I want to buy it now!"){
+				if(buttonPress === "Yes, I like it"){
 					window.location = "http://www.google.co.uk";
 				}
 			});
 		});
 		
 		$( document ).on( "click", "#notification2", function() {
-			$.metroMessageBox({
+			$.vMessageBox({
 				title: "Is getting better!",
 				content: "Metro MessageBox is getting bigger and Stronger!",
 				buttons: ["Button 1","Button 2","Button 3","Button 4"],
@@ -143,6 +143,5 @@ define(['jquery', 'bootstrap', 'velocity', 'vNotifications'], function($){
 				activebutton:"#139B80",
 			});
 		});
-
 	});
 });
