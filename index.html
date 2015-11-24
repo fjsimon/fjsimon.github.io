@@ -15,43 +15,65 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  	<script type="text/javascript">
+  		$(document).ready(function() {
+		    $(".menu-opener").click(function(e){
+		    	  $(".menu-opener, .menu-opener-inner, .menu").toggleClass("active");
+		    	  e.preventDefault();
+		    });
+		});
+  	</script>
 </head>
 <body class="body">
 	<div class="top">
-  	<div class="container">
-     	<div class="profile-image">
-        	<img src="https://cloud.githubusercontent.com/assets/11679498/8508493/e2eb16d4-226a-11e5-9654-f99971c0de86.png" alt="Fran">
-      	</div>
-      	<h1>Francisco Javier Lopez Simon</h1>
-      	<p>Code Enthusiast + Full Stack Software Engineer at <a href="http://researchspace.com" target="_blank">Research Space</a></p>
-   	<div class="contact-info">
-        <span class="item">
-          <a href="mailto:fran@researchspace.com?subject=Contact"><i class="fa fa-envelope-o"></i></a>
-        </span>
-        <span class="item">
-          <a href="https://twitter.com/fjlopezsimon" target="_blank"><i class="fa fa-twitter"></i></a>
-        </span>
-      	</div>
-   	</div>
-  	</div>  
-  
+		<nav class="menu-opener">
+			<div class="menu-opener-inner"></div>
+		</nav>
+		<nav class="menu">
+			<ul class="menu-inner">
+				<li class="menu-link"><a href="home">Home</a></li>
+				<li class="menu-link"><a href="notifications">vNotifications</a></li>
+				<li class="menu-link"><a href="photogallery">PhotoGallery</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<div class="profile-image">
+				<img
+					src="https://cloud.githubusercontent.com/assets/11679498/8508493/e2eb16d4-226a-11e5-9654-f99971c0de86.png"
+					alt="Fran">
+			</div>
+			<h1>Francisco Javier Lopez Simon</h1>
+			<p>Tech Enthusiast + Web developer/tester</p>
+			<div class="contact-info">
+				<span class="item"> <a href="mailto:fjlopez.mail@gmail.com?subject=Contact"><i class="fa fa-envelope-o"></i></a></span> 
+				<span class="item"> <a href="https://twitter.com/fjlopezsimon" target="_blank"><i class="fa fa-twitter"></i></a></span> 
+				<span class="item"> <a href="https://github.com/fjsimon" target="_blank"><i class="fa fa-github"></i></a></span>
+			</div>
+		</div>
+	</div>
+
 	<div class="main-content">
-  	<div class="container">
-  		<div class="content-section">
-		<div class="row">
-          	<div class="col-md-6">
-          	<div class="content-section-item">
-	              	<h3> <a href="http://fjsimon.github.io/pages/notifications.html" target="_blank"> vNotifications </a> </h3>
-	              	<p> JavaScript notifications using <a href="http://julian.com/research/velocity/" target="_blank"> velocity.js </a></p>
-              	</div>
-      		</div>
-        	</div>
-      		</div>
-    	</div>
-   	</div>
- 
-    	<footer>
-		<p>Francisco Javier Lopez Simon  •  Edinburgh, UK</p>
+		<div class="container">
+			<div class="content-section">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="content-section-item">
+							<h3>
+								<a href="notifications"> vNotifications </a>
+							</h3>
+							<p>
+								JavaScript notifications using <a href="http://julian.com/research/velocity/" target="_blank"> velocity.js </a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>Francisco Javier Lopez Simon • Made with ♥ Edinburgh, UK</p>
 	</footer>
 </body> 
 </html>
