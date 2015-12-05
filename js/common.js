@@ -2,7 +2,8 @@ requirejs.config({
 	baseUrl:"../js",
 	shim : {
         	"bootstrap" : { "deps" : ['jquery'] },
-	        "velocityui": { "deps" : [ 'velocity'] }
+        	"velocity" : { "deps" : ['jquery'] },
+	        "velocityui": { "deps" : ['velocity'] }
     	},
 	paths: {
 		jquery:'https://code.jquery.com/jquery-2.1.4.min',
