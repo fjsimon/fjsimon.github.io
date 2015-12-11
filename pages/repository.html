@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Repository </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"></link>
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+  	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.css" rel="stylesheet"></link>
+  	
+  	
+	<script data-main="<c:url value='/resources/js/common.js'/>"
+		src="<c:url value='/resources/js/require.js' />"></script>
+	
+	<script>
+		require(['common'], function () {
+			require(['jquery', 'bootstrap', 'bootgrid', 'bootgridfa'], function($) {
+	
+				$(document).ready(function() {
+					var globalData;
+					$("#search").on( "click", function(e) {
+						
+						$("#grid-basic").bootgrid("destroy");
+						$("#results tr").remove();
+						/* $("#results").css("visibility", "hidden"); */
+						
+						var title = $("#titleSearch").val();
+						$.get( "http://it-ebooks-api.info/v1/search/" + title , function(data) {
+							var total = data.Total;
+							var npages = Math.ceil(total/10);
+							var deferreds = [];
+							for(var page=1; page<=npages; page++){
+								deferreds.push(
+									$.get( "http://it-ebooks-api.info/v1/search/" + title + "/page/" + page, function(data) {
+										var results = data.Books;
+										$.each(results, function(i, item) {
+											$( "#results" ).append("<tr><td><a href=# id=idlink>"+results[i].ID+"</a></td>"+"<td>"+results[i].Title+"</td>"+"<td>"+ results[i].isbn + "</td></tr>");
+										});
+									})
+								);
+							}
+
+							$.when.apply($,deferreds).done(function() {
+								/* $("#results").css("visibility", "visible"); */
+								
+								var grid = $("#grid-basic").bootgrid({
+									selection: true, 
+									multiSelect: true,
+									formatters: {
+
+								        "commands": function(column, row) {
+								            return "<button type=\"button\" class=\"btn btn-xs btn-default command-view\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-eye\"></span></button>"; 
+								                // "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
+								        }
+								    }
+								}).on("loaded.rs.jquery.bootgrid", function(){
+									    /* Executes after data is loaded and rendered */
+									    grid.find(".command-view").on("click", function(e) {
+									        //alert("You pressed edit on row: " + $(this).data("row-id"));
+									        $.get( "http://it-ebooks-api.info/v1/book/" + $(this).data("row-id") , function( data ) {
+												globalData = data;
+												showBook(data);
+												$('#myModal').modal();
+											});	 
+									    });
+									    
+/* 									    end().find(".command-delete").on("click", function(e) {
+									   		alert("You pressed delete on row: " + $(this).data("row-id"));
+									    }); */
+								}).on("selected.rs.jquery.bootgrid", function(e, rows) {
+									    var rowIds = [];
+									    for (var i = 0; i < rows.length; i++) {
+									        rowIds.push(rows[i].id);
+									    }
+									    //alert("Select: " + rowIds.join(","));   
+								}).on("deselected.rs.jquery.bootgrid", function(e, rows) {
+									    var rowIds = [];
+									    for (var i = 0; i < rows.length; i++) {
+									        rowIds.push(rows[i].id);
+									    }
+									    //alert("Deselect: " + rowIds.join(","));
+								});
+					        });
+						});
+					});
+
+/* 					$(document).on("click", "#idlink", function (e) {
+						e.preventDefault();
+						var id = $(this).text();
+						$.get( "http://it-ebooks-api.info/v1/book/" + id , function( data ) {
+							globalData = data;
+							showBook(data);
+						});
+					}); */
+					
+					$("#add").on("click", function(e) {
+						
+						var bookIds = $("#grid-basic").bootgrid("getSelectedRows");
+						var deferreds = [];
+						var books = [];
+						
+						$.each(bookIds, function(i, item) {				        
+							deferreds.push(
+								$.get( "http://it-ebooks-api.info/v1/book/" + bookIds[i], function(data) {
+									var book = {
+											"id" : data.ID,
+											"title" : data.Title,
+											"subtitle" : data.SubTitle,
+											"description" : data.Description,
+											"author" : data.Author,
+											"isbn" : data.ISBN,
+											"page" : data.Page,
+											"year" : data.Year,
+											"publisher" : data.Publisher,
+											"image" : data.Image,
+											"download" : data.Download,
+										};
+									
+									books.push(book);
+								})
+							);
+						});
+
+						$.when.apply($,deferreds).done(function() {
+							console.log(books);
+							var r = JSON.stringify(books);
+							console.log(r);
+							
+ 							var jqxhr = $.ajax({
+				                 url: "library/addBooks",
+				                 type: "POST",
+				                 data: r,
+				                 contentType: "application/json; charset=utf-8",
+				                 success: function( jqXHR ){
+				                	 alert( "success " + jqXHR);
+				                 },
+ 				                 error: function(jqXHR, text, error){
+				                     alert("error " + jqXHR.statusText + " " + jqXHR.responseText); 
+				                 }, 
+				                 complete: function(  jqXHR,  textStatus ) {
+				                	 alert("complete " + jqXHR.statusText );
+				                 },
+				                 
+							}).done(function(data){
+								
+								alert("success");
+								
+							});
+							
+/*  						var jqxhr = $.post("library/addBooks", JSON.stringify(books) , function( data ) {
+								alert( "success" );
+							}, "json").done(function() {
+								//alert( "second success" );
+							}).fail(function() {
+								alert( "error" );
+							}).always(function() {
+								//alert( "finished" );
+							}); */
+							
+						});
+					});
+					
+					$("body").on("click", "#test", function (e) {
+						e.preventDefault();
+/* 						var data = {
+								url: "Some url here",
+								conditional: "true",
+								"list[0]": "element 1",
+								"list[1]": "element 2",
+						}; 
+						
+ 						$.get( "library/test/settings", data, function( result ) {
+							if(result === "success"){
+								alert("OK");
+							}
+						}).done(function() {
+							alert("Success");
+						}); */
+					});
+				});
+
+				function showBook( data ){
+					$( ".modal-body" ).html("<div id='large-cover-container'>" +
+							"<div class='productDetail-largeCover'>" +
+								"<img class='media-object' src='"+data.Image+"'  />" +
+							"</div>" +
+							"<div class='product-biblio'>" +
+					    		"<div> Title: "+ data.Title +"</div>" +
+							    "<div class=productDetail-biblio>" +
+									"<div> Authors: " + data.Author +"</div>" +
+									"<div> ISBN: " +data.ISBN +"</div>" +
+									"<div> Pages: " + data.Page + " pages</div>" +
+									"<div> Publication Date: " + data.Year + "</div>" +
+									"<div> Publisher: " + data.Publisher + "</div>" +
+									"<div> Link: <a href='"+ data.Download +"'>"+ data.Download +"</a></div>" +
+									"<div> Description: " + data.Description + "</div>" +
+								"</div>" +
+							"</div>" +
+						"</div>");
+				}
+				
+			});
+		});
+	</script>
+
+	<style>
+		#large-cover-container {
+		    position: relative;
+		    margin: 0px;
+		    padding: 0px;
+		    z-index: 10;
+		    width: 100%;
+		    display: inline-block;
+		}
+		
+		.productDetail-largeCover {
+		    float: left;
+		    box-shadow: 1px 1px 2px 1px #BBB;
+		}
+		
+		div.product-biblio {
+		    float: right;
+		    width: 60%;
+		    font-family: "Lato",sans-serif;
+			font-size: 13px;
+			color: #1D2626;
+		}
+	</style>
+</head>
+
+<body class="body">
+<%@include file="header.jsp" %>
+
+<div class="container">
+	<div class="btn-group" role="group">
+		<div class="input-group">
+			<input id="titleSearch" type="text" class="form-control" placeholder="Search for...">
+			
+ 			<div class="input-group-btn">
+ 			<button id="search" class="btn btn-default" type="button">Go</button>
+				<button id="add" class="btn btn-default" type="button">Add</button>
+				<button id="test" class="btn btn-default" type="button">Test</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<table id="grid-basic" class="table table-condensed table-hover table-striped">
+	    <thead>
+		    <tr>
+			    <th data-column-id="id" data-type="numeric" data-identifier="true">ID</th>
+			    <th data-column-id="title">Title</th>
+			    <th data-column-id="isbn" data-type="numeric" data-order="desc">ISBN</th>
+			    <!-- <th data-column-id="link" data-formatter="link" data-sortable="false">Link</th> -->
+			    <th data-column-id="commands" data-formatter="commands" data-sortable="false">Commands</th>
+		    </tr>
+	    </thead>
+	    <tbody id="results"></tbody>
+	</table>
+</div>
+
+<!-- <div id="book"></div> -->
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Book Info</h4>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div> 
+	</div>
+</div>
+
+</body>
+</html>
