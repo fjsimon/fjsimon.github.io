@@ -156,12 +156,6 @@ p a {
 	border-right: solid #eee 1px;
 }
 
-.bx-item {
-	font-family: KievitWeb, Arial;
-	font-size: 40px;
-	font-weight: 700;
-}
-
 @media screen and (max-width: 768px) {
 	.menu {
 		height: auto;
