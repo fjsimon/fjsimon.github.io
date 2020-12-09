@@ -10,7 +10,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big,
 	border: 0;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Helvetica'
+	font-family: 'Helvetica Neue'
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -41,7 +41,7 @@ table {
 }
 
 body {
-	color: #7E8F7C;
+	color: #007FFF;
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -80,7 +80,7 @@ p {
 }
 
 p a {
-	color: #7E8F7C;
+	color: #007FFF;
 }
 
 .profile-image {
@@ -96,7 +96,7 @@ p a {
 
 .top {
 	background: #FFF;
-	color: #7E8F7C;
+	color: #007FFF;
 	padding: 60px 0
 }
 
@@ -107,7 +107,7 @@ p a {
 }
 
 .top a {
-	color: #7E8F7C;
+	color: #007FFF;
 }
 
 .contact-info {
