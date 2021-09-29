@@ -41,7 +41,8 @@ table {
 }
 
 body {
-	color: #007FFF;
+	background: #000;
+	color: #FFF;
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -80,7 +81,7 @@ p {
 }
 
 p a {
-	color: #007FFF;
+	color: #FFF;
 }
 
 .profile-image {
@@ -95,19 +96,19 @@ p a {
 }
 
 .top {
-	background: #FFF;
-	color: #007FFF;
+	color: #FFF;
 	padding: 60px 0
 }
 
 .top p {
-	font-size: 18px;
+	font-size: 20px;
+	font-weight: bold;
 	margin-bottom: 10px;
 	text-align: center
 }
 
 .top a {
-	color: #007FFF;
+	color: #FFF;
 }
 
 .contact-info {
