@@ -42,7 +42,7 @@ table {
 
 body {
 	background: #000;
-	color: #FFF;
+	color: #007bff;
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -75,13 +75,13 @@ a:focus {
 }
 
 p {
-	font-size: 18px;
-	line-height: 26px;
-	font-weight: 100;
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: bold;
 }
 
 p a {
-	color: #FFF;
+	color: #007bff;
 }
 
 .profile-image {
@@ -96,7 +96,7 @@ p a {
 }
 
 .top {
-	color: #FFF;
+	color: #007bff;
 	padding: 60px 0
 }
 
@@ -113,7 +113,8 @@ p a {
 
 .contact-info {
 	font-size: 30px;
-	text-align: center
+	text-align: center;
+	padding: 10px 0;
 }
 
 .contact-info .item {
