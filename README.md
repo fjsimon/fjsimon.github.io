@@ -1,3 +1,3 @@
 # fjsimon.github.io
 
-Link: http://fjsimon.github.io/
+http://fjsimon.github.io/
