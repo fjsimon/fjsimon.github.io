@@ -8,9 +8,8 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big,
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Helvetica Neue'
+	font-family: 'Arial'
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -42,7 +41,7 @@ table {
 
 body {
 	background: #000;
-	color: #007bff;
+	color: #e9ecf0;
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -81,7 +80,7 @@ p {
 }
 
 p a {
-	color: #007bff;
+	color: #e9ecf0;
 }
 
 .profile-image {
@@ -96,7 +95,7 @@ p a {
 }
 
 .top {
-	color: #007bff;
+	color: #e9ecf0;
 	padding: 60px 0
 }
 
@@ -159,49 +158,76 @@ p a {
 }
 
 #hackernews-widget {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background-color: #000;
-  color: #ffffff;
-  padding: 15px;
-  border: 2px solid #33ff33;
-  border-radius: 5px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
-  max-width: 400px;
-  z-index: 1000;
-  box-shadow: 0 0 10px #33ff33;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #ffffff;
+    border: 2px solid #e9ecf0;
+    border-radius: 5px;
+    font-family: 'Arial';
+    font-size: 14px;
+    max-width: 400px;
+    box-shadow: 0 0 10px #e9ecf0;
+    z-index: 1000;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    max-height: 40px;
+    padding: 10px 15px;
 }
 
-#hackernews-widget strong {
-  display: block;
-  margin-bottom: 10px;
-  color: #33ff33;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Expanded state */
+#hackernews-widget.expanded {
+    max-height: 500px;
+    padding: 15px;
 }
 
+/* Header with toggle icon */
+#hn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+#hn-header strong {
+    color: #e9ecf0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#hn-toggle {
+    font-size: 18px;
+    color: #e9ecf0;
+}
+
+/* List styling */
 #hackernews-widget ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+    max-height: auto;
+    overflow-y: auto;
+}
+
+#hackernews-widget.expanded ul {
+    display: block;
 }
 
 #hackernews-widget li {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 #hackernews-widget a {
-  color: #33ff33;
-  text-decoration: none;
+    color: #e9ecf0;
+    text-decoration: none;
 }
 
 #hackernews-widget a:hover {
-  text-decoration: underline;
-  color: #33ff33;
+    text-decoration: underline;
+    color: #e9ecf0;
 }
-
 
 @media screen and (max-width: 768px) {
 	.menu {
