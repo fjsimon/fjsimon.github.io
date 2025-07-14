@@ -9,7 +9,8 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big,
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
-	font-family: 'Arial'
+	font-family: 'Arial';
+	color: aliceblue;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -41,7 +42,7 @@ table {
 
 body {
 	background: #000;
-	color: #e9ecf0;
+	color: aliceblue;
 	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
 }
@@ -95,7 +96,7 @@ p a {
 }
 
 .top {
-	color: #e9ecf0;
+	color: aliceblue;
 	padding: 60px 0
 }
 
@@ -111,7 +112,6 @@ p a {
 }
 
 .contact-info {
-	color: aliceblue;
 	font-size: 30px;
 	text-align: center;
 	padding: 10px 0;
@@ -164,12 +164,12 @@ p a {
     right: 20px;
     background-color: #000;
     color: #ffffff;
-    border: 2px solid #e9ecf0;
+    border: 2px solid aliceblue;
     border-radius: 5px;
     font-family: 'Arial';
     font-size: 14px;
     max-width: 400px;
-    box-shadow: 0 0 10px #e9ecf0;
+    box-shadow: 0 0 10px aliceblue;
     z-index: 1000;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
@@ -192,14 +192,14 @@ p a {
 }
 
 #hn-header strong {
-    color: #e9ecf0;
+    color: aliceblue;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 #hn-toggle {
     font-size: 18px;
-    color: #e9ecf0;
+    color: aliceblue;
 }
 
 /* List styling */
